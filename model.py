@@ -49,5 +49,5 @@ if __name__ == '__main__':
     PASSWORD = "password of remote mysql instance"
     DB = "database name"
     
-    db.connect(host=HOST, port=PORT, user=USER, passwd=PASSWORD, db=DB)
+    db.connect(host=IP, port=PORT, user=USER, passwd=PASSWORD, db=DB)
     db.create_tables([User, Invitation, Friend, Post, Follow, Token, Group])
