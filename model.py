@@ -43,11 +43,9 @@ class Group(BaseModel):
     member = ForeignKeyField(User, related_name='group_member', on_delete='CASCADE')
 
 if __name__ == '__main__':
-    IP = 8080
-    PORT = 1000
-    USER = "username of remote mysql instance"
-    PASSWORD = "password of remote mysql instance"
-    DB = "database name"
+    USER = wang
+    PASSWORD = wang
+    DB = Final_DB
     
-    db.connect(ip=IP, port=PORT, user=USER, passwd=PASSWORD, db=DB)
+    db.connect(host="localhost", user=USER, passwd=PASSWORD, db=DB)
     db.create_tables([User, Invitation, Friend, Post, Follow, Token, Group])
