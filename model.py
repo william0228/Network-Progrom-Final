@@ -43,8 +43,8 @@ class Group(BaseModel):
     member = ForeignKeyField(User, related_name='group_member', on_delete='CASCADE')
 
 if __name__ == '__main__':
-    HOST = "remote host"
-    PORT = 8000
+    IP = 8080
+    PORT = 1000
     USER = "username of remote mysql instance"
     PASSWORD = "password of remote mysql instance"
     DB = "database name"
