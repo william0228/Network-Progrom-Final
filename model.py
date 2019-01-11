@@ -15,32 +15,32 @@ class User(BaseModel):
 
 
 class Invitation(BaseModel):
-    inviter = ForeignKeyField(User, on_delete='CASCADE')
-    invitee = ForeignKeyField(User, on_delete='CASCADE')
+    inviter = ForeignKeyField(User, related_name='inviter', on_delete='CASCADE')
+    invitee = ForeignKeyField(User, related_name='invitee', on_delete='CASCADE')
 
 
 class Friend(BaseModel):
-    user = ForeignKeyField(User, on_delete='CASCADE')
-    friend = ForeignKeyField(User, on_delete='CASCADE')
+    user = ForeignKeyField(User, related_name='friend_user', on_delete='CASCADE')
+    friend = ForeignKeyField(User, related_name='friend', on_delete='CASCADE')
 
 
 class Post(BaseModel):
-    user = ForeignKeyField(User, on_delete='CASCADE')
+    user = ForeignKeyField(User, related_name='post_user', on_delete='CASCADE')
     message = CharField()
 
 
 class Follow(BaseModel):
-    follower = ForeignKeyField(User, on_delete='CASCADE')
-    followee = ForeignKeyField(User, on_delete='CASCADE')
+    follower = ForeignKeyField(User, related_name='follower', on_delete='CASCADE')
+    followee = ForeignKeyField(User, related_name='followee', on_delete='CASCADE')
 
 
 class Token(BaseModel):
     token = CharField(unique=True)
-    owner = ForeignKeyField(User, on_delete='CASCADE')
+    owner = ForeignKeyField(User, related_name='token_owner', on_delete='CASCADE')
 
 class Group(BaseModel):
     group_name = CharField(unique=False)
-    member = ForeignKeyField(User, on_delete='CASCADE')
+    member = ForeignKeyField(User, related_name='group_member', on_delete='CASCADE')
 
 if __name__ == '__main__':
     db.connect()
