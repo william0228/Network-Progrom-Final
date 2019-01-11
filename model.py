@@ -1,7 +1,7 @@
 from peewee import *
 
 
-db = SqliteDatabase('database.db', pragmas={'foreign_keys': 1},)
+db = SqliteDatabase('database.db', pragmas={'foreign_keys': 1})
 
 
 class BaseModel(Model):
@@ -43,5 +43,11 @@ class Group(BaseModel):
     member = ForeignKeyField(User, related_name='group_member', on_delete='CASCADE')
 
 if __name__ == '__main__':
-    db.connect()
+    HOST = "remote host"
+    PORT = 8000
+    USER = "username of remote mysql instance"
+    PASSWORD = "password of remote mysql instance"
+    DB = "database name"
+    
+    db.connect(host=HOST, port=PORT, user=USER, passwd=PASSWORD, db=DB)
     db.create_tables([User, Invitation, Friend, Post, Follow, Token, Group])
