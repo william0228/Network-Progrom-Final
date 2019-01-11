@@ -43,9 +43,9 @@ class Group(BaseModel):
     member = ForeignKeyField(User, related_name='group_member', on_delete='CASCADE')
 
 if __name__ == '__main__':
-    USER = wang
-    PASSWORD = wang
-    DB = Final_DB
+    USER = "wang"
+    PASSWORD = "wang"
+    DB = "Final_DB"
     
     db.connect(host="localhost", user=USER, passwd=PASSWORD, db=DB)
     db.create_tables([User, Invitation, Friend, Post, Follow, Token, Group])
