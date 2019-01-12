@@ -1,5 +1,5 @@
 from peewee import *
-
+from playhouse.migrate import SqliteMigrator, migrate
 
 db = SqliteDatabase('database.db', pragmas={'foreign_keys': 1})
 
@@ -43,11 +43,9 @@ class Group(BaseModel):
     member = ForeignKeyField(User, related_name='group_member', on_delete='CASCADE')
 
 if __name__ == '__main__':
-    HOST = "0.0.0.0"
-    IP = 8000
-    USER = "wang"
-    PASSWORD = "wang"
-    DB = "Final_DB"
-    
+
     db.connect()
     db.create_tables([User, Invitation, Friend, Post, Follow, Token, Group])
+    
+    migrator = SqliteMigrator(db)
+    
