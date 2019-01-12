@@ -49,5 +49,5 @@ if __name__ == '__main__':
     PASSWORD = "wang"
     DB = "Final_DB"
     
-    db.connect(host=HOST, ip=IP, user=USER, passwd=PASSWORD, db=DB)
+    db.connect()
     db.create_tables([User, Invitation, Friend, Post, Follow, Token, Group])
